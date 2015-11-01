@@ -7,7 +7,6 @@
 
 namespace Drupal\swiftmailer\Plugin\Mail;
 
-use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Mail\MailInterface;
@@ -75,7 +74,7 @@ class SwiftMailer implements MailInterface {
     // Get default mail line endings and merge all lines in the e-mail body
     // separated by the mail line endings.
     $line_endings = Settings::get('mail_line_endings', PHP_EOL);
-    $message['body'] = SafeMarkup::set(implode($line_endings, $message['body']));
+    $message['body'] = array('data' => array('#markup' => implode($line_endings, $message['body'])));
 
     // Get applicable format.
     $applicable_format = $this->getApplicableFormat($message);
