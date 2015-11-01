@@ -92,6 +92,8 @@ class SwiftMailer implements MailInterface {
         $converter = new Html2Text($message['body']);
         $message['plain'] = $converter->get_text();
       }
+    } else {
+        $message['body'] = $message['body']['data']['#markup'];
     }
 
     // Process any images specified by 'image:' which are to be added later
