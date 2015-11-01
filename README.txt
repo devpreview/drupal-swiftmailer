@@ -168,7 +168,8 @@ function test() {
   $p['files'][] = $file_two;
 
   // Send e-mail.
-  drupal_mail('modulename', 'key', 'test@test.com', language_default(), $p);
+  $mail_manager = \Drupal::service('plugin.manager.mail');
+  $mail_manager->mail('modulename', 'key', 'test@test.com', language_default(), $p);
 }
 
 /**
