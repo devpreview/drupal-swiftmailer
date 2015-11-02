@@ -169,7 +169,7 @@ function test() {
 
   // Send e-mail.
   $mail_manager = \Drupal::service('plugin.manager.mail');
-  $mail_manager->mail('modulename', 'key', 'test@test.com', language_default(), $p);
+  $mail_manager->mail('modulename', 'key', 'test@test.com', \Drupal::service('language.default'), $p);
 }
 
 /**
